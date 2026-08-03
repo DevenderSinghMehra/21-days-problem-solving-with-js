@@ -140,13 +140,14 @@ function printHollowPyramidV2(totalRows) {
     }
 
     if (!lastRow) {
-      const spaceStr = new Array(totalRows - currentRow).fill(" ").join("");
-      console.log(spaceStr + star.join(""));
+      const sideSpace = new Array(totalRows - currentRow).fill(" ").join("");
+      console.log(sideSpace + star.join(""));
     } else console.log(star.join(""));
 
     // ------
   }
 }
+// printHollowPyramidV2(6)
 /*   const D = {
   1: ["*******"],
   1: ["********"],
@@ -196,6 +197,7 @@ function printBinaryTriangle(rows) {
     console.log(sideSpace + strArray.join(""));
   }
 }
+printBinaryTriangle(6);
 // * answer 2 -home work
 function printButterflyFast(midRow) {
   //originalName: printButterflyOptimizedV3Clean

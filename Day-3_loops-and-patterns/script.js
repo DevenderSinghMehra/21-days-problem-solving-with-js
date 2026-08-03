@@ -827,7 +827,7 @@ function getMultiplicationTable(input) {
 }
 // getMultiplicationTable(500);
 
-const root = document.getElementById("root");
+/* const root = document.getElementById("root");
 
 getMultiplicationTable(10).forEach((table) => {
   const div = document.createElement("div");
@@ -840,7 +840,7 @@ getMultiplicationTable(10).forEach((table) => {
 
   root.appendChild(div);
 });
-
+  */
 //final ones.
 
 function printTable(input) {
