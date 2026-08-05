@@ -230,6 +230,7 @@ function getDigitAverageV2(num) {
 --- */
 
 function getLargestAndSmallestDigit(num) {
+  if (num === 0) return { largest: 0, smallest: 0 };
   const arr = [];
   let temp = num;
   while (temp > 0) {
@@ -246,9 +247,10 @@ function getLargestAndSmallestDigit(num) {
   // --
   return { smallest, largest };
 }
-// console.log(getLargestAndSmallestDigit(9483));
+console.log(getLargestAndSmallestDigit(9));
 
 function getLargestAndSmallestDigitV2(num) {
+  if (num === 0) return { largest: 0, smallest: 0 };
   let largest = 0;
   let smallest = 10; //last digit will always be a single digit a single digit cannot be more then 10,
   // --
@@ -277,7 +279,6 @@ function getLargestAndSmallestDigitV2(num) {
 function getFactorial(num) {
   // --validate num
   if (num === 0 || num === 1) return 1;
-  else if (num === undefined) return "pass something";
   // --calculate factorial
   let temp = num;
   let factorial = 1;
@@ -391,7 +392,8 @@ function getDigitFrequency(num) {
 
 //quotient == an integer
 //remainder == 0, for a number to be qualified as harshad number
-//when it is divides by the same of its digits.
+//when it is divides by the sum of its digits.
+//only an positive integer can an harshad number
 
 function isHarshadNum(num) {
   let temp = num;
@@ -410,5 +412,22 @@ function isHarshadNum(num) {
   return Number.isInteger(quotient) && remainder === 0 ? true : false;
   // return quotient % 1 === 0 && remainder === 0 ? true : false;
 }
-console.log(isHarshadNum(18));
-console.log(testFnBoolean(isHarshadNum, 1000));
+// console.log(isHarshadNum(18));
+// console.log(testFnBoolean(isHarshadNum, 1000));
+
+function isHarshadNumV2(num) {
+  if (num < 0) return "only an positive integer is acceptable";
+  let temp = num;
+  //sum of digits
+  let sumOfDigits = 0;
+  while (temp > 0) {
+    const lastDigit = temp % 10;
+    sumOfDigits += lastDigit;
+    // removing last digit from temp
+    const tempNoLastDigit = Math.floor(temp / 10);
+    temp = tempNoLastDigit;
+  }
+  /*for integers, if a is divisible by b then their remainder will always be zero and the quotient will always be an integer */
+  return num % sumOfDigits === 0;
+}
+console.log(isHarshadNumV2(18));

@@ -87,6 +87,7 @@ function getDigitAverage(num) {
 
 //answer-3
 function getLargestAndSmallestDigit(num) {
+  if (num === 0) return { largest: 0, smallest: 0 };
   let largest = 0;
   let smallest = 10; //last digit will always be a single digit a single digit cannot be more then 10,
   // --
@@ -107,7 +108,6 @@ function getLargestAndSmallestDigit(num) {
 function getFactorial(num) {
   // --validate num
   if (num === 0 || num === 1) return 1;
-  else if (num === undefined) return "pass something";
   // --calculate factorial
   let temp = num;
   let factorial = 1;
@@ -144,7 +144,6 @@ function isStrongNumV2(num) {
 //*Q5 answer
 
 function isAutomorphicNum(num) {
-  if (num === undefined) return "pass something";
   //counting digits of num
   let temp = num;
   let digitCount = 0;
@@ -183,7 +182,7 @@ function isAutomorphicNumV2(num) {
 function getDigitFrequency(num) {
   if (num === 0) return { 0: 1 };
   const frequency = {};
-
+  // --
   let temp = num;
   while (temp > 0) {
     const lastDigit = temp % 10;
@@ -199,7 +198,8 @@ function getDigitFrequency(num) {
 
 //*Q7 answer
 
-function isHarshadNum(num) {
+function isHarshadNumV(num) {
+  if (num < 0) return "only an positive integer is acceptable";
   let temp = num;
   //sum of digits
   let sumOfDigits = 0;
@@ -210,8 +210,7 @@ function isHarshadNum(num) {
     const tempNoLastDigit = Math.floor(temp / 10);
     temp = tempNoLastDigit;
   }
-  // checking is harshard
-  const quotient = num / sumOfDigits;
-  const remainder = num % sumOfDigits;
-  return Number.isInteger(quotient) && remainder === 0 ? true : false;
+  /*for integers, if a is divisible by b then their remainder will always be zero and the quotient will always be an integer */
+  return num % sumOfDigits === 0;
 }
+console.log(isHarshadNumV(18));
